@@ -6,21 +6,22 @@ body {
 }
 
 span.username {
-  font-weight:bold;
+  font-weight: bold;
 }
 
 span.date {
-  font-size: .8em;
+  font-size: .7em;
   color: #999;
 }
 
 span.uuid {
-  font-size: .5em;
+  font-size: .7em;
+  color: #AAA;
 }
 
 div.message {
   background-color: #fff;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
   transition: 0.3s;
   text-align: left;
   padding: 2px 16px;
@@ -28,35 +29,42 @@ div.message {
   border-radius: 5px;
 }
 
+.message-input-label {
+  width: 100%;
+}
+
+.message-input-username {
+  width: 100%;
+}
+
 .message-input-text-area {
   margin-bottom: 15px;
-  max-width:100%;
+  max-width: 100%;
 }
 
 div.message:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 div.message-input {
   background-color: #fff;
-  margin:15px;
-  padding:15px;
+  margin: 15px;
+  padding: 15px;
   border-radius: 5px;
 }
 
-div.message-input > .row {
-  text-align:left;
+div.message-input>.row {
+  text-align: left;
 }
-
 
 div.timeline-container {
   width: 400px;
 }
 
 div.container {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  height:calc(100vh - 55px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh - 55px);
   overflow: auto;
 }
