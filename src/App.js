@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-
 import TimelineContainer from './components/TimelineContainer';
+import {Grid} from 'react-bootstrap';
 
 class App extends Component {
   render() {
@@ -10,9 +10,9 @@ class App extends Component {
         <header className='App-header'>
           <h1 className='App-title'>Catrr</h1>
         </header>
-        <div className='body'>
+        <Grid>
           <TimelineContainer />
-        </div>
+        </Grid>
       </div>
     );
   }

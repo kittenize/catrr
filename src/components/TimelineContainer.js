@@ -6,12 +6,12 @@ const MESSAGES = [{
     username: 'cat2',
     message: 'first message',
     date: new Date(),
-    id: 'e40c37c4-2530-4984-bf0b-71f9c39af46b'
+    id: 'rpQFXw'
   },{
     username: 'dog',
     message: 'second',
     date: new Date(),
-    id: '279458f2-221f-44e9-b508-caa6f915e845'
+    id: 'UXCGW7'
   }];
 
 export default class TimelineContainer extends Component {

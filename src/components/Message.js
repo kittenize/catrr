@@ -1,19 +1,27 @@
 import React, {Component} from 'react';
+import {Row, Col} from 'react-bootstrap';
 
 export default class Message extends Component {
     render(){
+        let {username, date, message, id} = this.props;
         return (
-        <div className='message'>
-            <div className='row'>
-            <span className='username'>{this.props.username}</span> <span className='date'>{this.props.date.toLocaleTimeString()}</span>
+            <div className='message'>
+                <Row>
+                    <Col xs={12}>
+                        <span className='username'>{username}</span> <span className='date'>{date.toLocaleDateString()} {date.toLocaleTimeString()}</span>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        {message}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <span className='uuid'>{id}</span>
+                    </Col>
+                </Row>
             </div>
-            <div className='row'>
-            {this.props.message}
-            </div>
-            <div className='row'>
-            <span className='uuid'>{this.props.id}</span>
-            </div>
-        </div>
         )
     }
 }

@@ -4,8 +4,10 @@ import Message from './Message';
 export default class Timeline extends Component {
   render(){
     const messages = this.props.messages.map((message) => {
+      let {...props} = Object.assign({key: message.id}, message);
+
       return (
-        <Message key={message.id} username={message.username} message={message.message} id={message.id} date={message.date} />
+        <Message {...props} />
       );
     });
 

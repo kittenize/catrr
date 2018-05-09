@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
-const uuid = require('uuid/v4');
+import {Row, Col, Button} from 'react-bootstrap';
+import ShortUniqueId from 'short-unique-id';
+
+const uid = new ShortUniqueId();
+
 
 export default class MessageInput extends Component {
     constructor(props){
@@ -42,7 +46,7 @@ export default class MessageInput extends Component {
         username: this.state.username,
         message: this.state.message,
         date: new Date(),
-        id: uuid()
+        id: uid.randomUUID(6)
       })
   
   
@@ -56,17 +60,28 @@ export default class MessageInput extends Component {
     render(){
       var {username, message} = this.state;
       return (
-        <form className='messageForm' onSubmit={this.handleSubmit}>
-          <div className='messageInput'>
-            <div className='row'>
-              <label>Username: <input type='text' value={username} onChange={this.handleUsernameChange} /></label>
-            </div>
-            <div className='row'>
-              <label>Message: <input ref={(input) => {this.messageInput = input;}}type='text' value={message} onChange={this.handleMessageChange}/></label>
-            </div>
-            <div className='row'>
-              <button type='submit' disabled={(!username || !message)}>Submit</button>
-            </div>
+        <form className='message-form' onSubmit={this.handleSubmit}>
+          <div className='message-input'>
+            <Row>
+              <Col xs={12}>
+                <label>Username: <input className='form-control' type='text' value={username} onChange={this.handleUsernameChange} /></label>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12}>
+                <label>Message: </label>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12}>
+                <textarea className='message-input-text-area form-control' ref={(input) => {this.messageInput = input;}}type='text' value={message} onChange={this.handleMessageChange}></textarea>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12}>
+                <Button bsStyle="primary" type="submit" disabled={(!username || !message)}>Submit</Button>
+              </Col>
+            </Row>
           </div>
         </form>
       )
