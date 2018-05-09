@@ -1,20 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Message from './Message';
+import PropTypes from 'prop-types';
 
-export default class Timeline extends Component {
-    render() {
-        const messages = this.props.messages.map((message) => {
-            let { ...props } = Object.assign({ key: message.id }, message);
-
-            return (
-                <Message {...props} />
-            );
-        });
-
+const Timeline = ({messages}) => {
+    const messageData = messages.map(({id, ...props}) => {
         return (
-            <div className='timeline-container'>
-                {messages}
-            </div>
-        )
-    }
-}
+            <Message key={id} id={id} {...props} />
+        );
+    });
+
+    return (
+        <div className='timeline-container'>
+            {messageData}
+        </div>
+    );
+};
+
+Timeline.propTypes = {
+    messages: PropTypes.array
+};
+
+export default Timeline;

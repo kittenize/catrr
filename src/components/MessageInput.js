@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 import ShortUniqueId from 'short-unique-id';
+import PropTypes from 'prop-types';
 
 const uid = new ShortUniqueId();
-
 
 export default class MessageInput extends Component {
     constructor(props) {
@@ -11,7 +11,7 @@ export default class MessageInput extends Component {
         this.state = {
             username: '',
             message: ''
-        }
+        };
 
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handleMessageChange = this.handleMessageChange.bind(this);
@@ -21,22 +21,18 @@ export default class MessageInput extends Component {
 
     handleUsernameChange(event) {
         const username = event.target.value;
-        this.setState(function () {
-            return {
-                username: username,
-                message: this.state.message
-            };
-        })
+        this.setState({
+            username,
+            message: this.state.message
+        });
     }
 
     handleMessageChange(event) {
         const message = event.target.value;
-        this.setState(function () {
-            return {
-                username: this.state.username,
-                message: message
-            };
-        })
+        this.setState({
+            username: this.state.username,
+            message
+        });
     }
 
     handleSubmit(event) {
@@ -47,13 +43,13 @@ export default class MessageInput extends Component {
             message: this.state.message,
             date: new Date(),
             id: uid.randomUUID(6)
-        })
+        });
 
 
         this.setState({
             username: this.state.username,
             message: ''
-        })
+        });
 
         this.messageInput.focus();
     }
@@ -70,7 +66,7 @@ export default class MessageInput extends Component {
                     <Row>
                         <Col xs={12}>
                             <label className='message-input-label'>Message:
-                  <textarea className='message-input-text-area form-control' ref={(input) => { this.messageInput = input; }} type='text' value={message} onChange={this.handleMessageChange}></textarea>
+                                <textarea className='message-input-text-area form-control' ref={(input) => { this.messageInput = input; }} type='text' value={message} onChange={this.handleMessageChange}></textarea>
                             </label>
                         </Col>
                     </Row>
@@ -81,6 +77,10 @@ export default class MessageInput extends Component {
                     </Row>
                 </div>
             </form>
-        )
+        );
     }
 }
+
+MessageInput.propTypes = {
+    onSubmit: PropTypes.function
+};

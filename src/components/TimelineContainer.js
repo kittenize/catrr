@@ -15,8 +15,6 @@ const MESSAGES = [{
 }];
 
 export default class TimelineContainer extends Component {
-    state = { messages: [] }
-
     constructor(props) {
         super(props);
         this.state = {
@@ -29,7 +27,7 @@ export default class TimelineContainer extends Component {
     componentDidMount() {
         this.setState({
             messages: MESSAGES
-        })
+        });
     }
 
     handleSubmit(newMessage) {
@@ -40,13 +38,13 @@ export default class TimelineContainer extends Component {
                     username: message.username,
                     message: message.message,
                     date: message.date
-                }
+                };
             }));
 
             return {
                 messages: messages
             };
-        })
+        });
     }
 
     render() {
