@@ -3,3 +3,46 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+span.username {
+  font-weight:bold;
+}
+
+span.date {
+  font-size: .5em;
+}
+
+span.uuid {
+  font-size: .5em;
+}
+
+div.message {
+  margin:15px;
+  padding:15px;
+  border: 1px solid black;
+}
+div.message > .row {
+  text-align:left;
+}
+
+div.messageInput {
+  margin:15px;
+  padding:15px;
+  border: 1px solid blue;
+}
+
+div.messageInput > .row {
+  text-align:left;
+}
+
+
+div.timeline-container {
+  width: 400px;
+}
+
+div.body {
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+}
