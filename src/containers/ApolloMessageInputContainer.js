@@ -27,8 +27,8 @@ const ApolloMessageInputContainer = () => {
                 }} />
             )}
         </Mutation>
-    )
-}
+    );
+};
 
 export default ApolloMessageInputContainer;
 
