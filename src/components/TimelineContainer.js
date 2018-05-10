@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Timeline from './Timeline';
 import MessageInput from './MessageInput';
+import {Div} from 'glamorous';
+import PropTypes from 'prop-types';
 
 const MESSAGES = [{
     username: 'cat2',
@@ -48,11 +50,18 @@ export default class TimelineContainer extends Component {
     }
 
     render() {
+        const widthValue = this.props.width ? this.props.width : '100%';
+        const maxWidthValue = this.props.maxWidth ? this.props.maxWidth : undefined;
         return (
-            <div className='timeline-container'>
+            <Div width={widthValue} maxWidth={maxWidthValue}>
                 <MessageInput onSubmit={this.handleSubmit} />
                 <Timeline messages={this.state.messages} />
-            </div>
+            </Div>
         );
     }
 }
+
+TimelineContainer.propTypes = {
+    width: PropTypes.string,
+    maxWidth: PropTypes.string
+};

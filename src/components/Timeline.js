@@ -10,7 +10,7 @@ const Timeline = ({messages}) => {
     });
 
     return (
-        <div className='timeline-container'>
+        <div>
             {messageData}
         </div>
     );

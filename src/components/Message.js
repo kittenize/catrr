@@ -1,25 +1,48 @@
 import React from 'react';
-import {Row, Col} from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import glamorous from 'glamorous';
+
+const Container = glamorous.div({
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#fff',
+    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.5)',
+    transition: '0.3s',
+    textAlign: 'left',
+    padding: '2px 16px',
+    margin: '15px',
+    borderRadius: '5px',
+});
+
+const Row = glamorous.div({
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center'
+});
+
+const BoldSpan = glamorous.span({
+    fontWeight: 'bold',
+    paddingRight: '5px'
+});
+
+const SecondarySpan = glamorous.span({
+    fontSize: '.7em',
+    color: '#AAA'
+});
 
 const Message = ({username, date, message, id}) => (
-    <div className='message'>
+    <Container>
         <Row>
-            <Col xs={12}>
-                <span className='username'>{username}</span> <span className='date'>{date.toLocaleDateString()} {date.toLocaleTimeString()}</span>
-            </Col>
+            <BoldSpan>{username}</BoldSpan>
+            <SecondarySpan>{date.toLocaleDateString()} {date.toLocaleTimeString()}</SecondarySpan>
         </Row>
         <Row>
-            <Col xs={12}>
-                {message}
-            </Col>
+            {message}
         </Row>
         <Row>
-            <Col xs={12}>
-                <span className='uuid'>{id}</span>
-            </Col>
+            <SecondarySpan>{id}</SecondarySpan>
         </Row>
-    </div>
+    </Container>
 );
 
 Message.propTypes = {

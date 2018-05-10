@@ -1,21 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import TimelineContainer from './components/TimelineContainer';
-import { Grid } from 'react-bootstrap';
+import glamorous from 'glamorous';
 
-class App extends Component {
-    render() {
-        return (
-            <div className='App'>
-                <header className='App-header'>
-                    <h1 className='App-title'>Catrr</h1>
-                </header>
-                <Grid>
-                    <TimelineContainer />
-                </Grid>
-            </div>
-        );
-    }
-}
+const Navbar = glamorous.div({
+    width: '100%',
+    textAlign: 'center',
+    backgroundColor: '#222',
+    height: '80px',
+    color: 'white'
+});
+
+const App = () => {
+    return (
+        <glamorous.Div display="flex" flexDirection="column" alignItems="center">
+            <Navbar>
+                <h1>Catrr</h1>
+            </Navbar>
+            <TimelineContainer width="600px" maxWidth="100vw"/>
+        </glamorous.Div>
+    );
+};
 
 export default App;

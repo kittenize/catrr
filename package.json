@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "3",
+    "glamor": "^2.20.40",
+    "glamorous": "^4.13.0",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
-    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.2",
     "react-scripts": "^1.1.4",
     "short-unique-id": "^1.1.1",

@@ -1,9 +1,48 @@
 import React, { Component } from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
 import ShortUniqueId from 'short-unique-id';
 import PropTypes from 'prop-types';
+import glamorous from 'glamorous';
 
 const uid = new ShortUniqueId();
+
+const Container = glamorous.div({
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#fff',
+    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.5)',
+    transition: '0.3s',
+    textAlign: 'left',
+    padding: '2px 16px',
+    margin: '15px',
+    borderRadius: '5px',
+});
+
+const Row = glamorous.div({
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '5px'
+});
+
+
+const Label = glamorous.label({
+    fontWeight: 'bold'
+});
+
+const SubmitRow = glamorous.div({
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end'
+});
+
+const SubmitButton = glamorous.button({
+    borderRadius: '.5rem',
+    border: '1px solid #007bff',
+    padding: '.5rem',
+    backgroundColor: '#007bff',
+    color: 'white'
+});
 
 export default class MessageInput extends Component {
     constructor(props) {
@@ -38,13 +77,12 @@ export default class MessageInput extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        this.props.onSubmit({
-            username: this.state.username,
-            message: this.state.message,
+        const newState = Object.assign(this.state, {
             date: new Date(),
             id: uid.randomUUID(6)
         });
 
+        this.props.onSubmit(newState);
 
         this.setState({
             username: this.state.username,
@@ -56,31 +94,29 @@ export default class MessageInput extends Component {
     render() {
         var { username, message } = this.state;
         return (
-            <form className='message-form' onSubmit={this.handleSubmit}>
-                <div className='message-input'>
+            <Container>
+                <form className='message-form' onSubmit={this.handleSubmit}>
                     <Row>
-                        <Col xs={12}>
-                            <label className='message-input-label'>Username: <input className='message-input-username form-control' type='text' value={username} onChange={this.handleUsernameChange} /></label>
-                        </Col>
+                        <Label>Username</Label>
                     </Row>
                     <Row>
-                        <Col xs={12}>
-                            <label className='message-input-label'>Message:
-                                <textarea className='message-input-text-area form-control' ref={(input) => { this.messageInput = input; }} type='text' value={message} onChange={this.handleMessageChange}></textarea>
-                            </label>
-                        </Col>
+                        <glamorous.Input padding=".5rem" borderRadius="5px" border="1px solid gray" width="100%" lineHeight="1.5" type='text' value={username} onChange={this.handleUsernameChange} />
                     </Row>
                     <Row>
-                        <Col xs={12}>
-                            <Button bsStyle="primary" type="submit" disabled={(!username || !message)}>Submit</Button>
-                        </Col>
+                        <Label>Message</Label>
                     </Row>
-                </div>
-            </form>
+                    <Row>
+                        <glamorous.Textarea padding=".5rem" borderRadius="5px" border="1px solid gray" width="100%" innerRef={(input) => { this.messageInput = input; }} type='text' value={message} onChange={this.handleMessageChange}></glamorous.Textarea>
+                    </Row>
+                    <SubmitRow>
+                        <SubmitButton type="submit" disabled={(!username || !message)}>Submit</SubmitButton>
+                    </SubmitRow>
+                </form>
+            </Container>
         );
     }
 }
 
 MessageInput.propTypes = {
-    onSubmit: PropTypes.function
+    onSubmit: PropTypes.func
 };
