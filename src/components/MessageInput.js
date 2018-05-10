@@ -24,7 +24,6 @@ const Row = glamorous.div({
     marginBottom: '5px'
 });
 
-
 const Label = glamorous.label({
     fontWeight: 'bold'
 });
