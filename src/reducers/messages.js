@@ -3,12 +3,12 @@ import { ADD_MESSAGE, REMOVE_MESSAGE } from '../actions';
 const initialState =  [{
     username: 'cat2',
     message: 'first message',
-    date: new Date(),
+    date: (new Date()).getTime(),
     id: 'rpQFXw'
 }, {
     username: 'dog',
     message: 'second',
-    date: new Date(),
+    date: (new Date()).getTime(),
     id: 'UXCGW7'
 }];
 

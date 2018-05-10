@@ -34,7 +34,7 @@ const Message = ({username, date, message, id}) => (
     <Container>
         <Row>
             <BoldSpan>{username}</BoldSpan>
-            <SecondarySpan>{date.toLocaleDateString()} {date.toLocaleTimeString()}</SecondarySpan>
+            <SecondarySpan>{(new Date(date)).toLocaleDateString()} {(new Date(date)).toLocaleTimeString()}</SecondarySpan>
         </Row>
         <Row>
             {message}
@@ -47,7 +47,7 @@ const Message = ({username, date, message, id}) => (
 
 Message.propTypes = {
     username: PropTypes.string,
-    date: PropTypes.object,
+    date: PropTypes.number,
     message: PropTypes.string,
     id: PropTypes.string
 };

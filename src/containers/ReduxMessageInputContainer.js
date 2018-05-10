@@ -4,7 +4,7 @@ import { addMessage } from '../actions';
 import PropTypes from 'prop-types';
 import MessageInput from '../components/MessageInput';
 
-let MessageInputContainer = ({dispatch}) => {
+let ReduxMessageInputContainer = ({dispatch}) => {
     return (
         <MessageInput onSubmit={message => {
             dispatch(addMessage(message));
@@ -12,11 +12,11 @@ let MessageInputContainer = ({dispatch}) => {
     );
 };
 
-MessageInputContainer.propTypes = {
+ReduxMessageInputContainer.propTypes = {
     dispatch: PropTypes.func
 };
 
-MessageInputContainer = connect()(MessageInputContainer);
+ReduxMessageInputContainer = connect()(ReduxMessageInputContainer);
 
-export default MessageInputContainer;
+export default ReduxMessageInputContainer;
 

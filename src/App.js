@@ -1,12 +1,23 @@
 import React from 'react';
 import './App.css';
-import MessageInputContainer from './containers/MessageInputContainer';
-import TimelineContainer from './containers/TimelineContainer';
+
+import ApolloTimelineContainer from './containers/ApolloTimelineContainer';
+import ApolloMessageInputContainer from './containers/ApolloMessageInputContainer';
+import ReduxTimelineContainer from './containers/ReduxTimelineContainer';
+import ReduxMessageInputContainer from './containers/ReduxMessageInputContainer';
+
 import glamorous from 'glamorous';
 
 import {Provider} from 'react-redux';
 import {createStore } from 'redux';
 import app from './reducers';
+
+import ApolloClient from 'apollo-boost';
+import {ApolloProvider} from 'react-apollo';
+
+const client = new ApolloClient({
+    uri: 'http://localhost:8080/graphql'
+});
 
 const store = createStore(app);
 
@@ -18,19 +29,50 @@ const Navbar = glamorous.div({
     color: 'white'
 });
 
+const Column = glamorous.div({
+    flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+});
+
+const ColumnBody = glamorous.div({
+    width: '600px',
+    maxWidth: '50vw'
+});
+
+const ColumnHeader = glamorous.h1({
+    color: 'white',
+    paddingLeft: '15px'
+});
+
 const App = () => {
     return (
-        <Provider store={store}>
-            <glamorous.Div display="flex" flexDirection="column" alignItems="center">
-                <Navbar>
-                    <h1>Catrr</h1>
-                </Navbar>
-                <glamorous.Div width="600px" maxwidth="100vw">
-                    <MessageInputContainer />
-                    <TimelineContainer/>
-                </glamorous.Div>
+        <glamorous.Div display="flex" flexDirection="column" alignItems="center">
+            <Navbar>
+                <h1>Catrr</h1>
+            </Navbar>
+            <glamorous.Div display="flex" width="100vw" maxWidth="100vw">
+                <Column>
+                    <Provider store={store}>
+                        <ColumnBody>
+                            <ColumnHeader>Redux</ColumnHeader>
+                            <ReduxMessageInputContainer />
+                            <ReduxTimelineContainer/>
+                        </ColumnBody>
+                    </Provider>
+                </Column>
+                <Column>
+                    <ApolloProvider client={client}>
+                        <ColumnBody>
+                            <ColumnHeader>Apollo</ColumnHeader>
+                            <ApolloMessageInputContainer />
+                            <ApolloTimelineContainer />
+                        </ColumnBody>
+                    </ApolloProvider>
+                </Column>
             </glamorous.Div>
-        </Provider>
+        </glamorous.Div>
     );
 };
 

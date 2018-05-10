@@ -77,7 +77,7 @@ export default class MessageInput extends Component {
         event.preventDefault();
 
         const newState = Object.assign(this.state, {
-            date: new Date(),
+            date: (new Date()).getTime(),
             id: uid.randomUUID(6)
         });
 
