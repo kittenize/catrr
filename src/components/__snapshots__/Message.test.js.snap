@@ -2,37 +2,37 @@
 
 exports[`renders 1`] = `
 <div
-  className="css-wikk8p"
+  className="css-xz6hqc"
 >
   <div
-    className="css-7zsmr0"
+    className="css-6xcfcl"
   >
-    <span
-      className="css-qdfjtt"
+    <div
+      className="css-bczky1"
     >
       cat
-    </span>
-    <span
-      className="css-1m45918"
+    </div>
+    <div
+      className="css-nil"
     >
-      2018-5-10
-       
-      01:47:42
-    </span>
+      <span
+        className="css-kwnpyg"
+      >
+        &gt;&gt;dog
+      </span>
+      <span
+        className="css-1yifb7u"
+      >
+        2018-5-10
+         
+        01:47:42
+      </span>
+    </div>
   </div>
   <div
-    className="css-7zsmr0"
+    className="css-17mqoi4"
   >
     cat
-  </div>
-  <div
-    className="css-7zsmr0"
-  >
-    <span
-      className="css-1m45918"
-    >
-      dog
-    </span>
   </div>
 </div>
 `;

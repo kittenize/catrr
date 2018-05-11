@@ -1,47 +1,59 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
+import {colors} from '../constants';
 
 const Container = glamorous.div({
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: '#fff',
-    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.5)',
-    transition: '0.3s',
-    textAlign: 'left',
-    padding: '2px 16px',
-    margin: '15px',
-    borderRadius: '5px',
+    textAlign: 'left'
+    // border: '1px solid blue',
 });
 
-const Row = glamorous.div({
+const Header = glamorous.div({
+    width: '100%',
+    backgroundColor: colors.medium,
+    color: colors.dark,
+    paddingLeft: '15px',
+    paddingRight: '15px',
+    lineHeight: '2em',
+    boxSizing: 'border-box',
+    textAlign: 'left',
+    display: 'flex'
+});
+
+const Body = glamorous.div({
     width: '100%',
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: '15px'
 });
 
-const BoldSpan = glamorous.span({
-    fontWeight: 'bold',
-    paddingRight: '5px'
-});
-
-const SecondarySpan = glamorous.span({
+const IdContainer = glamorous.span({
     fontSize: '.7em',
-    color: '#AAA'
+    color: colors.dark,
+    paddingRight: '15px'
+});
+
+const DateContainer = glamorous.span({
+    fontSize: '.7em',
+    color: colors.dark
 });
 
 const Message = ({username, date, message, id}) => (
     <Container>
-        <Row>
-            <BoldSpan>{username}</BoldSpan>
-            <SecondarySpan>{(new Date(date)).toLocaleDateString()} {(new Date(date)).toLocaleTimeString()}</SecondarySpan>
-        </Row>
-        <Row>
+        <Header>
+            <glamorous.Div flexGrow="1">
+                {username}
+            </glamorous.Div>
+            <glamorous.Div>
+                <IdContainer>{('>>' + id)}</IdContainer>
+                <DateContainer>{(new Date(date)).toLocaleDateString()} {(new Date(date)).toLocaleTimeString()}</DateContainer>
+            </glamorous.Div>
+        </Header>
+        <Body>
             {message}
-        </Row>
-        <Row>
-            <SecondarySpan>{id}</SecondarySpan>
-        </Row>
+        </Body>
     </Container>
 );
 

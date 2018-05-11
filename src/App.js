@@ -5,8 +5,8 @@ import ApolloTimelineContainer from './containers/ApolloTimelineContainer';
 import ApolloMessageInputContainer from './containers/ApolloMessageInputContainer';
 import ReduxTimelineContainer from './containers/ReduxTimelineContainer';
 import ReduxMessageInputContainer from './containers/ReduxMessageInputContainer';
-
 import glamorous from 'glamorous';
+import {colors} from './constants';
 
 import {Provider} from 'react-redux';
 import {createStore } from 'redux';
@@ -37,13 +37,17 @@ const Column = glamorous.div({
 });
 
 const ColumnBody = glamorous.div({
-    width: '600px',
-    maxWidth: '50vw'
+    width: '100%',
+    maxWidth: '50vw',
+    padding: '15px',
+    boxSizing: 'border-box'
 });
 
 const ColumnHeader = glamorous.h1({
-    color: 'white',
-    paddingLeft: '15px'
+    backgroundColor: colors.dark,
+    color: '#D5CFB7',
+    padding: '15px',
+    boxSizing: 'border-box'
 });
 
 const App = () => {
@@ -52,7 +56,7 @@ const App = () => {
             <Navbar>
                 <h1>Catrr</h1>
             </Navbar>
-            <glamorous.Div display="flex" width="100vw" maxWidth="100vw">
+            <glamorous.Div display="flex" minWidth="400px" width="90vw" maxWidth="90vw">
                 <Column>
                     <Provider store={store}>
                         <ColumnBody>

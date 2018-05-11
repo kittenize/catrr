@@ -2,52 +2,61 @@ import React, { Component } from 'react';
 import ShortUniqueId from 'short-unique-id';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
+import Card from './Card';
+import {colors} from '../constants';
 
 const uid = new ShortUniqueId();
-
-const Container = glamorous.div({
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#fff',
-    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.5)',
-    transition: '0.3s',
-    textAlign: 'left',
-    padding: '2px 16px',
-    margin: '15px',
-    borderRadius: '5px',
-});
 
 const Row = glamorous.div({
     width: '100%',
     display: 'flex',
     alignItems: 'center',
-    marginBottom: '5px'
+    paddingBottom: '5px',
+    boxSizing: 'border-box'
 });
 
-const Label = glamorous.label({
-    fontWeight: 'bold'
+const UsernameLabel = glamorous.label({
+    fontSize:'1em',
+    paddingRight: '15px',
+    backgroundColor: colors.medium,
+    lineHeight: '2.2em',
+    paddingLeft: '15px',
+    color: colors.dark,
+    width: '150px'
+});
+
+const MessageLabel = glamorous.div({
+    fontSize:'1em',
+    paddingRight: '15px',
+    backgroundColor: colors.medium,
+    lineHeight: '2.2em',
+    paddingLeft: '15px',
+    color: colors.dark,
+    width: '100%',
+    boxSizing: 'border-box'
 });
 
 const SubmitRow = glamorous.div({
     width: '100%',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    boxSizing: 'border-box'
 });
 
 const SubmitButton = glamorous.button({
-    borderRadius: '.5rem',
-    border: '1px solid #007bff',
+    border: '0',
     padding: '.5rem',
-    backgroundColor: '#007bff',
-    color: 'white'
+    margin: '5px',
+    backgroundColor: colors.dark,
+    color: colors.light
 });
 
 export default class MessageInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            username: 'RandomCatrr',
             message: ''
         };
 
@@ -93,25 +102,22 @@ export default class MessageInput extends Component {
     render() {
         var { username, message } = this.state;
         return (
-            <Container>
+            <Card header="Post Message">
                 <form className='message-form' onSubmit={this.handleSubmit}>
                     <Row>
-                        <Label>Username</Label>
+                        <UsernameLabel>Username</UsernameLabel> <glamorous.Input flexGrow='1' backgroundColor="#C0B496" padding=".5rem" border="0" width="100%" lineHeight="1.5" type='text' value={username} onChange={this.handleUsernameChange} placeholder="Name" />
                     </Row>
-                    <Row>
-                        <glamorous.Input padding=".5rem" borderRadius="5px" border="1px solid gray" width="100%" lineHeight="1.5" type='text' value={username} onChange={this.handleUsernameChange} />
-                    </Row>
-                    <Row>
-                        <Label>Message</Label>
-                    </Row>
-                    <Row>
-                        <glamorous.Textarea padding=".5rem" borderRadius="5px" border="1px solid gray" width="100%" innerRef={(input) => { this.messageInput = input; }} type='text' value={message} onChange={this.handleMessageChange}></glamorous.Textarea>
-                    </Row>
+                    <MessageLabel>
+                        Message
+                    </MessageLabel>
+
+                    <glamorous.Textarea boxSizing='border-box' placeholder="Type a message..." backgroundColor="#C0B496" padding=".5rem" border="0" width="100%" innerRef={(input) => { this.messageInput = input; }} type='text' value={message} onChange={this.handleMessageChange}></glamorous.Textarea>
+                    
                     <SubmitRow>
                         <SubmitButton type="submit" disabled={(!username || !message)}>Submit</SubmitButton>
                     </SubmitRow>
                 </form>
-            </Container>
+            </Card>
         );
     }
 }
