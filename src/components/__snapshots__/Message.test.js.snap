@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<div
+  className="css-xz6hqc"
+>
+  <div
+    className="css-6xcfcl"
+  >
+    <div
+      className="css-bczky1"
+    >
+      cat
+    </div>
+    <div
+      className="css-nil"
+    >
+      <span
+        className="css-kwnpyg"
+      >
+        &gt;&gt;dog
+      </span>
+      <span
+        className="css-1yifb7u"
+      >
+        2018-5-10
+         
+        01:47:42
+      </span>
+    </div>
+  </div>
+  <div
+    className="css-17mqoi4"
+  >
+    cat
+  </div>
+</div>
+`;

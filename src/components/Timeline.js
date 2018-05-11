@@ -1,18 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Message from './Message';
+import PropTypes from 'prop-types';
+import Card from './Card';
 
-export default class Timeline extends Component {
-  render(){
-    const messages = this.props.messages.map((message) => {
-      return (
-        <Message key={message.id} username={message.username} message={message.message} id={message.id} date={message.date} />
-      );
-    });
+const Timeline = ({messages}) => (
+    <Card header="Messages">
+        {messages
+            .map((message) => (message))
+            .sort((a, b) => {
+                return b.date - a.date;
+            })
+            .map(({id, ...props}) => ( <Message key={id} id={id} {...props} /> ))}
+    </Card>
+);
 
-    return (
-      <div className='timeline-container'>
-        {messages}
-      </div>
-    )
-  }
-}
+Timeline.propTypes = {
+    messages: PropTypes.array
+};
+
+export default Timeline;
